@@ -74,6 +74,50 @@ if (isset($_GET['totalRows_buscador_articulo'])) {
   $totalRows_buscador_articulo = mysql_num_rows($all_buscador_articulo);
 }
 $totalPages_buscador_articulo = ceil($totalRows_buscador_articulo/$maxRows_buscador_articulo)-1;
+
+$maxRows_configuracion = 1;
+$pageNum_configuracion = 0;
+if (isset($_GET['pageNum_configuracion'])) {
+  $pageNum_configuracion = $_GET['pageNum_configuracion'];
+}
+$startRow_configuracion = $pageNum_configuracion * $maxRows_configuracion;
+
+mysql_select_db($database_concredito, $concredito);
+$query_configuracion = "SELECT * FROM configuracion";
+$query_limit_configuracion = sprintf("%s LIMIT %d, %d", $query_configuracion, $startRow_configuracion, $maxRows_configuracion);
+$configuracion = mysql_query($query_limit_configuracion, $concredito) or die(mysql_error());
+$row_configuracion = mysql_fetch_assoc($configuracion);
+
+if (isset($_GET['totalRows_configuracion'])) {
+  $totalRows_configuracion = $_GET['totalRows_configuracion'];
+} else {
+  $all_configuracion = mysql_query($query_configuracion);
+  $totalRows_configuracion = mysql_num_rows($all_configuracion);
+}
+$totalPages_configuracion = ceil($totalRows_configuracion/$maxRows_configuracion)-1;
+
+
+//Precio = 4,250 X (1 + (2.8 X 12) /100)
+//= 4,250 X 1.336
+//= 5,678
+//echo "precio";
+$precio = $row_buscador_articulo['precio'];
+//echo $precio;
+//echo "<br>";
+//echo "tasa";
+$tasa = $row_configuracion['tasa'];
+//echo $tasa;
+//echo "<br>";
+//echo "plazo";
+$plazo = $row_configuracion['plazo'];
+//echo $plazo;
+//echo "<br>";
+$importe = $precio * (1 +  ( $tasa * $plazo )/100);
+//echo "<br>";
+
+//echo $importe;
+
+
 ?><!DOCTYPE HTML>
 <html>
 <head>
@@ -92,12 +136,13 @@ $totalPages_buscador_articulo = ceil($totalRows_buscador_articulo/$maxRows_busca
 function valor()
 {
 var n1 = document.getElementById("cantidad").value;
-var n2 = document.getElementById("precio").value;
+var n2 = document.getElementById("precio2").value;
 var n3 = (parseInt(n1)*parseInt(n2))
 importe.value = n3;
 alert("deseas continuar?")
 }
 </script>
+
 
 
 <body>
@@ -179,7 +224,9 @@ echo date("d/m/Y ");
                 <td><input type="text" name="importe" id="importe" value="" size="32"></td>
               </tr>
               <tr valign="baseline">
-                <td nowrap align="right">&nbsp;</td>
+                <td nowrap align="right"><label>
+                  <input type="text" name="precio2 " style="visibility:hidden" id="precio2" value="<?php echo $importe ?>">
+                </label></td>
                 <td><input type="submit" class="btn success"    value="Insertar registro"></td>
               </tr>
             </table>
@@ -207,9 +254,13 @@ echo date("d/m/Y ");
           </table>
           </div>
           <p>&nbsp;</p>
+          
+          <p>&nbsp;</p>
 		  
 </body>
 </html>
 <?php
 mysql_free_result($buscador_articulo);
+
+mysql_free_result($configuracion);
 ?>
