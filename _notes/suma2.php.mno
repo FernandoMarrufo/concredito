@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_clientes" value="name:clave_cliente;datatype:int,name:nombre;datatype:string,name:apellido_pat;datatype:string,name:apellido_mat;datatype:string,name:rfc;datatype:string" />
+	<infoitem key="UD_preventa" value="name:id;datatype:int,name:descripcion;datatype:string,name:modelo;datatype:string,name:cantidad;datatype:int,name:precio;datatype:real,name:importe;datatype:real" />
+</info>

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ventas" value="name:folio_venta;datatype:string,name:clave_cliente;datatype:string,name:nombre;datatype:string,name:total;datatype:real,name:fecha;datatype:date,name:estatus;datatype:string" />
+</info>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_buscador_articulos" value="name:id_articulo;datatype:int,name:descripcion_articulo;datatype:string,name:modelo;datatype:string,name:precio;datatype:real,name:existencia;datatype:int" />
+	<infoitem key="UD_buscador_articulo" value="name:id_articulo;datatype:int,name:descripcion_articulo;datatype:string,name:modelo;datatype:string,name:precio;datatype:real,name:existencia;datatype:int" />
+</info>

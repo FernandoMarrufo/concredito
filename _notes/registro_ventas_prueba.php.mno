@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_configuracion" value="name:tasa;datatype:real,name:enganche;datatype:real,name:plazo;datatype:real" />
+	<infoitem key="UD_articulos" value="name:id_articulo;datatype:int,name:descripcion_articulo;datatype:string,name:modelo;datatype:string,name:precio;datatype:real,name:existencia;datatype:int" />
+	<infoitem key="UD_pre_venta" value="name:id;datatype:int,name:descripcion;datatype:string,name:modelo;datatype:string,name:cantidad;datatype:int,name:precio;datatype:real,name:importe;datatype:real" />
+	<infoitem key="UD_clientes" value="name:clave_cliente;datatype:int,name:nombre;datatype:string,name:apellido_pat;datatype:string,name:apellido_mat;datatype:string,name:rfc;datatype:string" />
+</info>
